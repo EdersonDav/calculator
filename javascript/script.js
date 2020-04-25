@@ -1,3 +1,6 @@
+//Select display
+var display = document.querySelector(".result")
+
 //Select number
 var seven = document.querySelector('#seven')
 var eight = document.querySelector('#eight')
@@ -23,26 +26,71 @@ var mult = document.querySelector('#mult')
 var equal = document.querySelector('#equal')
 
 //Event numbers
-seven.addEventListener('click', function (){console.log(seven.value)})
-eight.addEventListener('click', function (){console.log(eight.value)})
-nine.addEventListener('click', function (){console.log(nine.value)})
-four.addEventListener('click', function (){console.log(four.value)})
-five.addEventListener('click', function (){console.log(five.value)})
-six.addEventListener('click', function (){console.log(six.value)})
-one.addEventListener('click', function (){console.log(one.value)})
-two.addEventListener('click', function (){console.log(two.value)})
-three.addEventListener('click', function (){console.log(three.value)})
-zero.addEventListener('click', function (){console.log(zero.value)})
+seven.addEventListener('click', function (){addNumbersInHTML(seven.value)})
+eight.addEventListener('click', function (){addNumbersInHTML(eight.value)})
+nine.addEventListener('click', function (){addNumbersInHTML(nine.value)})
+four.addEventListener('click', function (){addNumbersInHTML(four.value)})
+five.addEventListener('click', function (){addNumbersInHTML(five.value)})
+six.addEventListener('click', function (){addNumbersInHTML(six.value)})
+one.addEventListener('click', function (){addNumbersInHTML(one.value)})
+two.addEventListener('click', function (){addNumbersInHTML(two.value)})
+three.addEventListener('click', function (){addNumbersInHTML(three.value)})
+zero.addEventListener('click', function (){addNumbersInHTML(zero.value)})
 
-//Event itens
+//Event dot and comma
 dot.addEventListener('click', function (){console.log(dot.value)})
 com.addEventListener('click', function (){console.log(com.value)})
-ad.addEventListener('click', function (){console.log(ad.value)})
-sub.addEventListener('click', function (){console.log(sub.value)})
-clear.addEventListener('click', function (){console.log(clear.value)})
-divs.addEventListener('click', function (){console.log(divs .value)})
-back.addEventListener('click', function (){console.log(back .value)})
-mod.addEventListener('click', function (){console.log(mod.value)})
-mult.addEventListener('click', function (){console.log(mult .value)})
-equal.addEventListener('click', function (){console.log(equal.value)})
 
+//Event operations
+ad.addEventListener('click', function (){defineOperation(ad.value)})
+sub.addEventListener('click', function (){defineOperation(sub.value)})
+divs.addEventListener('click', function (){defineOperation(divs .value)})
+mult.addEventListener('click', function (){defineOperation(mult .value)})
+mod.addEventListener('click', function (){defineOperation(mod.value)})
+
+//Event clear and back
+clear.addEventListener('click', function (){console.log(clear.value)})
+back.addEventListener('click', function (){console.log(back .value)})
+
+//Event iguals
+equal.addEventListener('click', function (){(equal.value)})
+
+//Add numbers in display
+var stringNumbers = ""
+
+function addNumbersInHTML(numbers){
+    stringNumbers += numbers;
+    display.innerHTML = stringNumbers
+}
+
+//Operations
+var operations = ""
+var numbers1 = 0
+var numbers2 = 0
+
+function defineOperation(operation){
+    numbers1 = Number(stringNumbers)
+    switch(operation){
+        case "+":
+            operations = "+"
+            addNumbersInHTML(" + ")
+        break;
+        case "-":
+            operations = "-"
+            addNumbersInHTML(" - ")
+        break;
+        case "x":
+            operations = "x"
+            addNumbersInHTML(" x ")
+        break;
+        case "/":
+            operations = "/"
+            addNumbersInHTML(" / ")
+        break;
+        case "%":
+        operations = "%"
+        addNumbersInHTML(" % ")
+        break
+    }
+    stringNumbers = ""
+}
