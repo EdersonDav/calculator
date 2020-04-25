@@ -24,7 +24,7 @@ var sub = document.querySelector('#sub')
 var clear = document.querySelector('#clear')
 var divs = document.querySelector('#divs')
 var back = document.querySelector('#back')
-var mod = document.querySelector('#mod')
+var mod = document.querySelector('#perc')
 var mult = document.querySelector('#mult')
 var equal = document.querySelector('#equal')
 
@@ -130,15 +130,10 @@ function finishResult(){
         break
     }
     //reset values
-    value01.innerHTML = ""
-    value02.innerHTML = ""
-    operationInDisplay.innerHTML = ""
+    resetValues()
     resultFin.innerHTML = FinishValue
-    operations = ""
-    numbers1 = 0
-    numbers2 = 0
-    stringNumbers1 = ""
-    stringNumbers2 = ""
+
+
 }
 
 //Reset values
@@ -146,10 +141,10 @@ function resetValues(){
     value01.innerHTML = ""
     value02.innerHTML = ""
     operationInDisplay.innerHTML = ""
-    resultFin.innerHTML = ""
     operations = ""
     numbers1 = 0
     numbers2 = 0
     stringNumbers1 = ""
     stringNumbers2 = ""
+    resultFin.innerHTML = ""
 }
