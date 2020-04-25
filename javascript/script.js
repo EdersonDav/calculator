@@ -1,5 +1,8 @@
 //Select display
-var display = document.querySelector(".result")
+var value01 = document.querySelector("#value01")
+var operationInDisplay = document.querySelector("#operat")
+var value02 = document.querySelector("#value02")
+var resultFin = document.querySelector("#resultFin")
 
 //Select number
 var seven = document.querySelector('#seven')
@@ -49,18 +52,29 @@ mult.addEventListener('click', function (){defineOperation(mult .value)})
 mod.addEventListener('click', function (){defineOperation(mod.value)})
 
 //Event clear and back
-clear.addEventListener('click', function (){console.log(clear.value)})
+clear.addEventListener('click', function (){resetValues()})
 back.addEventListener('click', function (){console.log(back .value)})
 
-//Event iguals
-equal.addEventListener('click', function (){(equal.value)})
+//Event equals
+equal.addEventListener('click', function (){(finishResult())})
 
 //Add numbers in display
-var stringNumbers = ""
+var stringNumbers1 = ""
+var stringNumbers2 = ""
 
 function addNumbersInHTML(numbers){
-    stringNumbers += numbers;
-    display.innerHTML = stringNumbers
+    resultFin.innerHTML = ""
+
+    if(operations == ""){
+        stringNumbers1 += numbers;
+        value01.innerHTML = stringNumbers1 
+    }else if(numbers == "+" ||numbers == "-" ||numbers == "x" ||numbers == "/" ||numbers == "%" ){
+        operationInDisplay.innerHTML = operations
+    }else{
+        stringNumbers2 += numbers;
+        value02.innerHTML = stringNumbers2
+    }
+    
 }
 
 //Operations
@@ -69,28 +83,73 @@ var numbers1 = 0
 var numbers2 = 0
 
 function defineOperation(operation){
-    numbers1 = Number(stringNumbers)
+    numbers1 = Number(stringNumbers1)
     switch(operation){
         case "+":
             operations = "+"
-            addNumbersInHTML(" + ")
+            addNumbersInHTML("+")
         break;
         case "-":
             operations = "-"
-            addNumbersInHTML(" - ")
+            addNumbersInHTML("-")
         break;
         case "x":
             operations = "x"
-            addNumbersInHTML(" x ")
+            addNumbersInHTML("x")
         break;
         case "/":
             operations = "/"
-            addNumbersInHTML(" / ")
+            addNumbersInHTML("/")
         break;
         case "%":
         operations = "%"
-        addNumbersInHTML(" % ")
+        addNumbersInHTML("%")
         break
     }
-    stringNumbers = ""
+}
+
+//Equals 
+var FinishValue
+function finishResult(){
+    numbers2 = Number(stringNumbers2)
+    switch(operations){
+        case "+":
+            FinishValue = numbers1 + numbers2
+        break;
+        case "-":
+            FinishValue = numbers1 - numbers2
+        break;
+        case "x":
+            FinishValue = numbers1 * numbers2
+        break;
+        case "/":
+            FinishValue = numbers1 / numbers2
+        break;
+        case "%":
+            FinishValue = numbers1 % numbers2
+        break
+    }
+    //reset values
+    value01.innerHTML = ""
+    value02.innerHTML = ""
+    operationInDisplay.innerHTML = ""
+    resultFin.innerHTML = FinishValue
+    operations = ""
+    numbers1 = 0
+    numbers2 = 0
+    stringNumbers1 = ""
+    stringNumbers2 = ""
+}
+
+//Reset values
+function resetValues(){
+    value01.innerHTML = ""
+    value02.innerHTML = ""
+    operationInDisplay.innerHTML = ""
+    resultFin.innerHTML = ""
+    operations = ""
+    numbers1 = 0
+    numbers2 = 0
+    stringNumbers1 = ""
+    stringNumbers2 = ""
 }
