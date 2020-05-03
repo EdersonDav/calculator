@@ -4,7 +4,7 @@
 </div>
 <p>Calculadora simples criada em: 
   <ul> 
-    <li>HTML<li> 
+    <li>HTML</li> 
     <li>CSS</li>
     <li>Javascript</li>
   </ul>
