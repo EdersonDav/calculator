@@ -2,7 +2,7 @@
 
 
 ![](./videoCalculator.gif)
-<p>Calculadora simples criada em: 
+<p><h2>Calculadora simples criada em:</h2> 
   <ul> 
     <li>HTML</li> 
     <li>CSS</li>
