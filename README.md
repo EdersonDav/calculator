@@ -1,7 +1,7 @@
 <h1>Calculadora</h1> 
-<div style="text-align: center;">
-  <video autoplay src="Assets/video/videoCalculator.mp4" width="600px"></video>
-</div>
+========
+
+![](./videoCalculator.gif)
 <p>Calculadora simples criada em: 
   <ul> 
     <li>HTML<li> 
