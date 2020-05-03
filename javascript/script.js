@@ -18,7 +18,7 @@ var zero = document.querySelector('#zero')
 
 //Select itens
 var dot = document.querySelector('#dot')
-var com = document.querySelector('#com')
+var neg = document.querySelector('#neg')
 var ad = document.querySelector('#ad')
 var sub = document.querySelector('#sub')
 var clear = document.querySelector('#clear')
@@ -40,9 +40,16 @@ two.addEventListener('click', function () { addNumbersInHTML(two.value) })
 three.addEventListener('click', function () { addNumbersInHTML(three.value) })
 zero.addEventListener('click', function () { addNumbersInHTML(zero.value) })
 
-//Event dot and comma
-dot.addEventListener('click', function () { console.log(dot.value) })
-com.addEventListener('click', function () { console.log(com.value) })
+//Event dot and negative
+dot.addEventListener('click', function () { addNumbersInHTML(dot.value) })
+
+neg.addEventListener('click', function () {
+    if (stringNumbers1 == "" || stringNumbers2 == "") {
+        console.log(stringNumbers1)
+        console.log(stringNumbers2)
+        addNumbersInHTML(neg.value)
+    }
+})
 
 //Event operations
 ad.addEventListener('click', function () { defineOperation(ad.value) })
@@ -60,23 +67,27 @@ equal.addEventListener('click', function () { (finishResult()) })
 //Add numbers in display
 var stringNumbers1 = ""
 var stringNumbers2 = ""
-var notBack = 0
+var notBack;
 
 function addNumbersInHTML(numbers) {
     resultFin.innerHTML = ""
 
     if (operations == "") {
+        if (numbers == '(-)') { numbers = '-' }
         stringNumbers1 += numbers;
         value01.innerHTML = stringNumbers1
+        notBack = 1
     } else if (numbers == "+" || numbers == "-" || numbers == "x" || numbers == "/") {
         operationInDisplay.innerHTML = operations
-
+        notBack = 2
 
     } else if (numbers == "²") {
         finishResult()
     } else {
+        if (numbers == '(-)') { numbers = '-' }
         stringNumbers2 += numbers;
         value02.innerHTML = stringNumbers2
+        notBack = 3
     }
 
 }
@@ -134,7 +145,7 @@ function finishResult() {
             break
     }
     //set for not function backValue
-    notBack = 1
+    notBack = 4
     //reset values
     resetValues()
     resultFin.innerHTML = FinishValue
@@ -156,9 +167,34 @@ function resetValues() {
 }
 
 function backValue() {
-    if (notBack != 1) {
-        console.log()
-    } else {
-        console.log("Não apagar")
+    let str;
+    switch (notBack) {
+        case 1:
+            str = value01.innerHTML
+            str = str.substring(0, (str.length - 1));
+            stringNumbers1 = str
+            value01.innerHTML = str
+            break;
+
+        case 2:
+            str = operationInDisplay.innerHTML
+            str = str.substring(0, (str.length - 1));
+            operations = str
+            operationInDisplay.innerHTML = str
+            if (operationInDisplay.innerHTML == '') { notBack = 1 }
+            break;
+
+        case 3:
+            str = value02.innerHTML
+            str = str.substring(0, (str.length - 1));
+            stringNumbers2 = str
+            value02.innerHTML = str
+            if (value02.innerHTML == '') { notBack = 2 }
+            break;
+
+        default:
+            resetValues()
+            break
     }
+
 }
