@@ -1,7 +1,6 @@
 <h1>Calculadora</h1> 
 
-
-![](./videoCalculator.gif)
+<img src="videoCalculator.gif">
 <p><h2>Calculadora simples criada em:</h2> 
   <ul> 
     <li>HTML</li> 
